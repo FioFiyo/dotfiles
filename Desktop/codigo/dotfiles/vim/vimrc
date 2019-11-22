@@ -5,6 +5,29 @@ set backup
 set history=25
 set ruler
 set incsearch
+set colorcolumn=80
+set cursorline
+set splitbelow
+set splitright
 syntax on 
 set hlsearch
 filetype plugin indent on
+" ---- Netrw setup
+let g:netrw_liststyle = 2
+let g:netrw_banner = 0
+let g:netrw_browse_split = 2
+let g:netrw_winsize = 15
+let g:netrw_altv = 1
+set nocp " 'compatible' is not set
+let g:netrw_preview = 1
+augroup ProjectDrawer
+	autocmd!
+	autocmd VimEnter * :Vexplore
+augroup END
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+
+
