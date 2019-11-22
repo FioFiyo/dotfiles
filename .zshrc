@@ -125,6 +125,8 @@ alias pg-stop='pg_ctl -D /usr/local/var/postgres stop'
 git config alias.up pull --rebase
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"
+export EDITOR="code -w"
+export EDITOR="vim"
 # THIS IS IN CASE RUBY INSTALL v X.X.X doesn't work or is asking for libraries/packages missing
 # RUBY_CONFIGURE_OPTS="--with-INSERT_PACKAGE_NAME-dir=(brew --prefix PACKAGE_NAME)" <- assuming its using homebrew installation path
 # FOR MYSQL2 running ruby 2.3.8:
