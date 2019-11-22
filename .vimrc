@@ -1,1 +1,0 @@
-/Users/fiorella/Desktop/codigo/dotfiles/vim/vimrc
