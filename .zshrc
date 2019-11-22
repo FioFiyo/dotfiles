@@ -118,7 +118,7 @@ alias redis-start='brew services start redis'
 alias redis-stop='brew services stop redis'
 alias redis-restart='brew services restart redis'
 alias sidekiq-up='bundle exec sidekiq'
-alias scout-up='rails s -e development -p 3001'
+alias dev-up='rails s -e development -p 3001'
 alias pg-up='brew services start postgresql'
 alias pg-stop='pg_ctl -D /usr/local/var/postgres stop'
 # Use --rebase when pulling from remote. It will put my commits off the commit stack and then stack them up on top of the just downloaded commits.
