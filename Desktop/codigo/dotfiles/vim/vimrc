@@ -9,9 +9,21 @@ set colorcolumn=80
 set cursorline
 set splitbelow
 set splitright
+if has('nvim')
+	tnoremap <ESC> <C-\><C-n>
+	tnoremap <A-[> <ESC>
+	" Switch split windows
+	tnoremap <a-h> <c-\><c-n><c-w>h
+	tnoremap <a-j> <c-\><c-n><c-w>j
+	tnoremap <a-k> <c-\><c-n><c-w>k
+	tnoremap <a-l> <c-\><c-n><c-w>l
+endif
 syntax on 
 set hlsearch
 filetype plugin indent on
+" Write buffer to new file, delete the og file and rename new file
+set nobackup
+set nowritebackup
 " ---- Netrw setup
 let g:netrw_liststyle = 2
 let g:netrw_banner = 0
@@ -24,10 +36,20 @@ augroup ProjectDrawer
 	autocmd!
 	autocmd VimEnter * :Vexplore
 augroup END
+" - Mappings to switch between split windows
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
-
-
+" ---- VIM-PLUG
+"  Can't use /plugin 
+call plug#begin('~/.vim/plugged')
+" My list of plugins
+Plug 'tpope/vim-sensible'
+Plug 'junegunn/seoul256.vim'
+Plug 'vim-ruby/vim-ruby'
+Plug 'ctrlpvim/ctrlp.vim'
+call plug#end()
+let g:ctrlp_user_command = 'ag %s -l --hidden -g ""'
+let g:ctrlp_use_caching = 0
