@@ -1,0 +1,92 @@
+" ------- Fio's Basics -----
+"  -----------------------
+set nocompatible              " be improved, required
+filetype off                  " required
+
+set backup
+set history=25
+set ruler
+set incsearch
+set colorcolumn=80
+set cursorline
+set splitbelow
+set splitright
+set autochdir
+set textwidth=80
+set wildmenu
+set wildmode=longest:full,full
+set noswapfile
+set nobackup
+set spell
+set list listchars=tab:\ \ ,trail:·
+
+let mapleader = " "
+nmap <Leader>h :nohl <CR>
+" Go begining of word not line
+nmap 0 ^ 
+" To replace j and k for go down one line when its wrapped
+nmap j gj
+nmap k gk
+" Sets number
+set nu
+augroup numbertoggle
+  autocmd!
+  autocmd InsertLeave * set nornu
+  autocmd InsertEnter * set rnu
+augroup END
+
+if has('nvim')
+	tnoremap <ESC> <C-\><C-n>
+	tnoremap <A-[> <ESC>
+	" Switch split windows
+	tnoremap <a-h> <c-\><c-n><c-w>h
+	tnoremap <a-j> <c-\><c-n><c-w>j
+	tnoremap <a-k> <c-\><c-n><c-w>k
+	tnoremap <a-l> <c-\><c-n><c-w>l
+endif
+syntax on 
+set hlsearch
+filetype plugin indent on
+" Write buffer to new file, delete the og file and rename new file
+set nobackup
+set nowritebackup
+" ---- Netrw setup
+let g:netrw_liststyle = 2
+let g:netrw_banner = 0
+let g:netrw_browse_split = 2
+let g:netrw_winsize = 15
+let g:netrw_altv = 1
+set nocp " 'compatible' is not set
+let g:netrw_preview = 1
+augroup ProjectDrawer
+	autocmd!
+	autocmd VimEnter * :Vexplore
+augroup END
+" - Mappings to switch between split windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+" - Tabbing stuff
+set tabstop=2
+set shiftwidth=2
+set shiftround
+set expandtab
+" ---- VIM-PLUG
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'junegunn/seoul256.vim'
+Plugin 'vim-ruby/vim-ruby'
+Plugin 'ctrlpvim/ctrlp.vim'
+call vundle#end()
+let g:ctrlp_user_command = 'ag %s -l --hidden -g ""'
+let g:ctrlp_show_hidden=1
+let g:ctrlp_use_caching=0
+let g:ctrlp_working_path_mode = 'ra'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
+"set wildignore+=*\\tmp\\*,*.swp,*.zip,*.exe  " Windows
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+colo seoul256
+set background=dark
